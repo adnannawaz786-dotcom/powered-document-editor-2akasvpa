@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .notion-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(55 65 81) transparent;
+  }
+  
+  .notion-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .notion-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .notion-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(156 163 175);
+    border-radius: 3px;
+    border: none;
+  }
+  
+  .notion-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(107 114 128);
+  }
+  
+  .editor-content {
+    @apply min-h-[calc(100vh-120px)] px-6 py-8;
+  }
+  
+  .editor-content h1 {
+    @apply text-4xl font-bold mb-4 text-foreground outline-none;
+    line-height: 1.2;
+  }
+  
+  .editor-content h2 {
+    @apply text-2xl font-semibold mb-3 text-foreground outline-none;
+    line-height: 1.3;
+  }
+  
+  .editor-content h3 {
+    @apply text-xl font-semibold mb-2 text-foreground outline-none;
+    line-height: 1.4;
+  }
+  
+  .editor-content p {
+    @apply text-base leading-relaxed mb-2 text-foreground outline-none;
+    min-height: 1.5rem;
+  }
+  
+  .editor-content ul,
+  .editor-content ol {
+    @apply ml-6 mb-2;
+  }
+  
+  .editor-content li {
+    @apply text-base leading-relaxed text-foreground outline-none;
+  }
+  
+  .editor-content blockquote {
+    @apply border-l-4 border-muted-foreground pl-4 italic text-muted-foreground mb-2;
+  }
+  
+  .editor-content code {
+    @apply bg-muted px-2 py-1 rounded text-sm font-mono;
+  }
+  
+  .editor-content pre {
+    @apply bg-muted p-4 rounded-lg overflow-x-auto mb-4;
+  }
+  
+  .editor-content pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  .editor-block {
+    @apply relative group;
+  }
+  
+  .editor-block:hover .block-actions {
+    @apply opacity-100;
+  }
+  
+  .block-actions {
+    @apply absolute left-0 top-0 opacity-0 transition-opacity duration-200;
+    transform: translateX(-100%);
+  }
+  
+  .block-menu {
+    @apply bg-popover border border-border rounded-lg shadow-lg py-2 min-w-[200px] z-50;
+  }
+  
+  .block-menu-item {
+    @apply flex items-center gap-3 px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors;
+  }
+  
+  .ai-sidebar {
+    @apply w-80 bg-card border-l border-border flex flex-col h-full;
+  }
+  
+  .ai-sidebar-header {
+    @apply p-4 border-b border-border;
+  }
+  
+  .ai-sidebar-content {
+    @apply flex-1 p-4 overflow-y-auto notion-scrollbar;
+  }
+  
+  .ai-chat-message {
+    @apply mb-4 p-3 rounded-lg;
+  }
+  
+  .ai-chat-message.user {
+    @apply bg-primary text-primary-foreground ml-8;
+  }
+  
+  .ai-chat-message.assistant {
+    @apply bg-muted mr-8;
+  }
+  
+  .document-list-item {
+    @apply flex items-center gap-3 p-3 rounded-lg hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors group;
+  }
+  
+  .document-list-item:hover .document-actions {
+    @apply opacity-100;
+  }
+  
+  .document-actions {
+    @apply opacity-0 transition-opacity duration-200 ml-auto;
+  }
+  
+  .toolbar {
+    @apply sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border;
+  }
+  
+  .toolbar-button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-3;
+  }
+  
+  .toolbar-button.active {
+    @apply bg-accent text-accent-foreground;
+  }
+  
+  .sidebar {
+    @apply w-64 bg-card border-r border-border flex flex-col h-full;
+  }
+  
+  .sidebar-header {
+    @apply p-4 border-b border-border;
+  }
+  
+  .sidebar-content {
+    @apply flex-1 overflow-y-auto notion-scrollbar;
+  }
+  
+  .sidebar-footer {
+    @apply p-4 border-t border-border;
+  }
+  
+  .empty-state {
+    @apply flex flex-col items-center justify-center text-center py-12 px-6;
+  }
+  
+  .empty-state-icon {
+    @apply w-12 h-12 text-muted-foreground mb-4;
+  }
+  
+  .empty-state-title {
+    @apply text-lg font-medium text-foreground mb-2;
+  }
+  
+  .empty-state-description {
+    @apply text-sm text-muted-foreground max-w-sm;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full border-2 border-muted border-t-primary;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+  
+  .slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+  
+  .slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Custom focus styles for better accessibility */
+.focus-visible {
+  @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+/* Notion-like placeholder text */
+.editor-placeholder::before {
+  content: attr(data-placeholder);
+  @apply text-muted-foreground pointer-events-none absolute;
+}
+
+/* Selection styles */
+::selection {
+  @apply bg-primary/20;
+}
+
+/* Custom styles for resizable panels */
+.resize-handle {
+  @apply bg-border hover:bg-primary transition-colors;
+}
+
+.resize-handle:hover {
+  @apply bg-primary;
+}
+
+/* Custom styles for command palette */
+.command-palette {
+  @apply bg-popover border border-border rounded-lg shadow-lg;
+}
+
+.command-palette-input {
+  @apply w-full px-4 py-3 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground;
+}
+
+.command-palette-list {
+  @apply max-h-80 overflow-y-auto notion-scrollbar;
+}
+
+.command-palette-item {
+  @apply flex items-center gap-3 px-4 py-3 text-sm cursor-pointer hover:bg-accent hover:text-accent-foreground;
+}
+
+.command-palette-item[aria-selected="true"] {
+  @apply bg-accent text-accent-foreground;
+}
